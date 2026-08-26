@@ -1,0 +1,84 @@
+name: Publish binary release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout tagged bundle
+        uses: actions/checkout@v4
+
+      - name: Validate runtime bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          required=(Voidline.exe Voidline.dll Voidline.deps.json Voidline.runtimeconfig.json)
+          for file in "${required[@]}"; do
+            if [[ ! -s "$file" ]]; then
+              echo "Missing or empty required runtime file: $file"
+              exit 1
+            fi
+          done
+
+      - name: Package runtime and checksums
+        shell: bash
+        run: |
+          set -euo pipefail
+          tag="${GITHUB_REF_NAME}"
+          archive="Voidline-${tag}.zip"
+
+          mapfile -t runtime_files < <(
+            git ls-files | grep -E '(^Voidline\.(exe|dll|deps\.json|runtimeconfig\.json)$|\.dll$|^runtimes/)'
+          )
+
+          if [[ ${#runtime_files[@]} -eq 0 ]]; then
+            echo "No runtime files found to package."
+            exit 1
+          fi
+
+          zip -9 "$archive" "${runtime_files[@]}"
+          sha256sum "$archive" Voidline.exe Voidline.dll > SHA256SUMS.txt
+
+          cat > RELEASE_BODY.md <<EOF
+          ## Voidline ${tag}
+
+          Binary-only Windows/.NET 9 release bundle.
+
+          ### Download
+          - \`${archive}\` — complete runtime bundle
+          - \`SHA256SUMS.txt\` — SHA-256 hashes for the archive and core binaries
+
+          ### Requirements
+          - Windows 10/11
+          - .NET 9 Desktop Runtime
+
+          Keep the extracted executable, DLLs, JSON runtime files and \`runtimes/\` directory together.
+
+          See the repository README for usage, verification and responsible-use guidance.
+          EOF
+
+      - name: Create or update GitHub Release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          tag="${GITHUB_REF_NAME}"
+          archive="Voidline-${tag}.zip"
+
+          if gh release view "$tag" >/dev/null 2>&1; then
+            gh release upload "$tag" "$archive" SHA256SUMS.txt --clobber
+            gh release edit "$tag" --title "Voidline ${tag}" --notes-file RELEASE_BODY.md
+          else
+            gh release create "$tag" "$archive" SHA256SUMS.txt \
+              --title "Voidline ${tag}" \
+              --notes-file RELEASE_BODY.md
+          fi

@@ -1,0 +1,71 @@
+name: Bootstrap v3 release assets
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/bootstrap-v3-release-assets.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  publish-v3:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout current binary bundle
+        uses: actions/checkout@v4
+
+      - name: Validate runtime bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          required=(Voidline.exe Voidline.dll Voidline.deps.json Voidline.runtimeconfig.json)
+          for file in "${required[@]}"; do
+            if [[ ! -s "$file" ]]; then
+              echo "Missing or empty required runtime file: $file"
+              exit 1
+            fi
+          done
+
+      - name: Package v3 runtime and checksums
+        shell: bash
+        run: |
+          set -euo pipefail
+          archive="Voidline-v3.zip"
+
+          mapfile -t runtime_files < <(
+            git ls-files | grep -E '(^Voidline\.(exe|dll|deps\.json|runtimeconfig\.json)$|\.dll$|^runtimes/)'
+          )
+
+          zip -9 "$archive" "${runtime_files[@]}"
+          sha256sum "$archive" Voidline.exe Voidline.dll > SHA256SUMS.txt
+
+          cat > RELEASE_BODY.md <<'EOF'
+          ## Voidline v3
+
+          Binary-only Windows/.NET 9 release bundle.
+
+          ### Download
+          - `Voidline-v3.zip` — complete runtime bundle
+          - `SHA256SUMS.txt` — SHA-256 hashes for the archive and core binaries
+
+          ### Requirements
+          - Windows 10/11
+          - .NET 9 Desktop Runtime
+
+          Extract the complete ZIP and keep the executable, DLLs, runtime JSON files and `runtimes/` directory together.
+
+          See the repository README for verification and responsible-use guidance.
+          EOF
+
+      - name: Upload assets to existing v3 release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh release upload v3 Voidline-v3.zip SHA256SUMS.txt --clobber
+          gh release edit v3 --title "Voidline v3" --notes-file RELEASE_BODY.md

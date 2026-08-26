@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Latest Voidline release
+    url: https://github.com/SLP-DEV1/Voidline/releases/latest
+    about: Download the latest binary release and checksums before reporting runtime issues.
+  - name: Release verification guide
+    url: https://github.com/SLP-DEV1/Voidline/blob/main/RELEASES.md
+    about: Verify downloaded archives with the published SHA-256 checksums.
