@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="760" viewBox="0 0 1440 760" role="img" aria-labelledby="title desc">
+  <title id="title">Voidline promotional interface preview</title>
+  <desc id="desc">Dark technical Voidline interface preview for the binary-only Windows and .NET 9 release.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071015"/>
+      <stop offset="0.55" stop-color="#0b1118"/>
+      <stop offset="1" stop-color="#11161d"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#151b22"/>
+      <stop offset="1" stop-color="#0e1319"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1dd7d0"/>
+      <stop offset="1" stop-color="#45f0dc"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#24d8d1" stop-opacity="0.19"/>
+      <stop offset="1" stop-color="#24d8d1" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#000" flood-opacity="0.55"/>
+    </filter>
+    <filter id="soft">
+      <feGaussianBlur stdDeviation="34"/>
+    </filter>
+    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse">
+      <path d="M42 0H0V42" fill="none" stroke="#9db3c1" stroke-opacity="0.035"/>
+    </pattern>
+  </defs>
+
+  <rect width="1440" height="760" rx="28" fill="url(#bg)"/>
+  <rect width="1440" height="760" rx="28" fill="url(#grid)"/>
+  <circle cx="1120" cy="160" r="300" fill="url(#glow)"/>
+  <circle cx="230" cy="610" r="240" fill="#ef3340" opacity="0.035" filter="url(#soft)"/>
+
+  <g transform="translate(102 64)">
+    <path d="M0 3h18l16 27H16zM9 38h18l12 20H21z" fill="url(#accent)"/>
+    <text x="55" y="53" fill="#f5f7f9" font-family="Inter,Segoe UI,Arial,sans-serif" font-weight="700" font-size="58" letter-spacing="-2">Voidline</text>
+    <text x="57" y="83" fill="#58dcd5" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="18" letter-spacing="1.6">BINARY-ONLY WINDOWS / .NET 9 RELEASE</text>
+  </g>
+
+  <g filter="url(#shadow)" transform="translate(102 176)">
+    <rect width="1236" height="498" rx="18" fill="#0a0e13" stroke="#39434e" stroke-width="1.2"/>
+    <rect width="1236" height="54" rx="18" fill="#141a20"/>
+    <rect y="36" width="1236" height="18" fill="#141a20"/>
+    <circle cx="24" cy="27" r="7" fill="#20d4cd"/>
+    <text x="43" y="33" fill="#e7edf1" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16">Voidline</text>
+    <circle cx="1170" cy="27" r="5" fill="#64727f"/>
+    <circle cx="1192" cy="27" r="5" fill="#64727f"/>
+    <circle cx="1214" cy="27" r="5" fill="#ef4d56"/>
+
+    <rect y="54" width="170" height="444" fill="#0d1217"/>
+    <g font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15">
+      <rect x="12" y="75" width="146" height="48" rx="9" fill="#172328"/>
+      <rect x="12" y="75" width="3" height="48" rx="2" fill="#24d8d1"/>
+      <circle cx="37" cy="99" r="8" fill="none" stroke="#24d8d1" stroke-width="2"/>
+      <circle cx="37" cy="99" r="2.5" fill="#24d8d1"/>
+      <text x="58" y="105" fill="#f0f4f6">Visuals</text>
+      <text x="58" y="162" fill="#96a2ad">Radar</text>
+      <text x="58" y="218" fill="#96a2ad">Audio</text>
+      <text x="58" y="274" fill="#96a2ad">Profiles</text>
+      <text x="58" y="330" fill="#96a2ad">Settings</text>
+      <circle cx="37" cy="156" r="8" fill="none" stroke="#75828e"/>
+      <circle cx="37" cy="212" r="8" fill="none" stroke="#75828e"/>
+      <circle cx="37" cy="268" r="8" fill="none" stroke="#75828e"/>
+      <circle cx="37" cy="324" r="8" fill="none" stroke="#75828e"/>
+    </g>
+
+    <g transform="translate(188 72)">
+      <rect width="324" height="244" rx="12" fill="url(#panel)" stroke="#202932"/>
+      <text x="18" y="29" fill="#33d9d1" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700">VISUALS</text>
+      <g font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" fill="#cad2d8">
+        <text x="20" y="65">Enable Visuals</text><text x="20" y="99">Overlay Boxes</text><text x="20" y="133">Skeleton</text><text x="20" y="167">Health Bar</text><text x="20" y="201">Names &amp; Distance</text>
+      </g>
+      <g fill="#23d5ce">
+        <rect x="268" y="50" width="34" height="18" rx="9"/><circle cx="293" cy="59" r="6" fill="#e9ffff"/>
+        <rect x="285" y="87" width="15" height="15" rx="3"/><path d="m288 94 3 3 6-7" fill="none" stroke="#071315" stroke-width="2"/>
+        <rect x="285" y="121" width="15" height="15" rx="3"/><path d="m288 128 3 3 6-7" fill="none" stroke="#071315" stroke-width="2"/>
+        <rect x="285" y="155" width="15" height="15" rx="3"/><path d="m288 162 3 3 6-7" fill="none" stroke="#071315" stroke-width="2"/>
+        <rect x="285" y="189" width="15" height="15" rx="3"/><path d="m288 196 3 3 6-7" fill="none" stroke="#071315" stroke-width="2"/>
+      </g>
+    </g>
+
+    <g transform="translate(528 72)">
+      <rect width="336" height="244" rx="12" fill="url(#panel)" stroke="#202932"/>
+      <text x="18" y="29" fill="#33d9d1" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700">OVERVIEW</text>
+      <g transform="translate(18 48)" font-family="Inter,Segoe UI,Arial,sans-serif">
+        <rect width="92" height="70" rx="8" fill="#11181f" stroke="#27313b"/>
+        <rect x="105" width="92" height="70" rx="8" fill="#11181f" stroke="#27313b"/>
+        <rect x="210" width="92" height="70" rx="8" fill="#11181f" stroke="#27313b"/>
+        <text x="10" y="20" fill="#8e9ba6" font-size="10">ENTITIES</text><text x="10" y="49" fill="#f2f5f7" font-size="25">18</text>
+        <text x="115" y="20" fill="#8e9ba6" font-size="10">VISIBLE</text><text x="115" y="49" fill="#f2f5f7" font-size="25">12</text>
+        <text x="220" y="20" fill="#8e9ba6" font-size="10">FRAME</text><text x="220" y="49" fill="#33d9d1" font-size="21">4.2 ms</text>
+      </g>
+      <path d="M20 190 L45 176 L62 182 L79 161 L101 177 L124 148 L143 168 L165 153 L186 172 L204 151 L228 164 L250 144 L274 160 L315 138" fill="none" stroke="#24d8d1" stroke-width="2"/>
+      <path d="M20 205H316" stroke="#2b353e"/><path d="M20 171H316" stroke="#2b353e" opacity=".55"/>
+    </g>
+
+    <g transform="translate(880 72)">
+      <rect width="326" height="244" rx="12" fill="url(#panel)" stroke="#202932"/>
+      <text x="18" y="29" fill="#33d9d1" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700">RADAR</text>
+      <g transform="translate(153 121)">
+        <circle r="77" fill="#0d1419" stroke="#596570"/>
+        <circle r="51" fill="none" stroke="#3c4852"/><circle r="26" fill="none" stroke="#3c4852"/>
+        <path d="M-77 0H77M0-77V77" stroke="#3c4852"/>
+        <path d="M0-8 8 11H-8z" fill="#26d6cf"/>
+        <circle cx="37" cy="-38" r="5" fill="#ef4650"/><circle cx="48" cy="25" r="5" fill="#ef4650"/><circle cx="-35" cy="22" r="4" fill="#ef4650"/>
+        <circle cx="24" cy="-18" r="4" fill="#2edbd4"/><circle cx="-18" cy="-42" r="4" fill="#2edbd4"/>
+        <text x="-5" y="-87" fill="#aeb8c0" font-family="Arial" font-size="10">N</text><text x="82" y="4" fill="#aeb8c0" font-family="Arial" font-size="10">E</text><text x="-4" y="94" fill="#aeb8c0" font-family="Arial" font-size="10">S</text><text x="-91" y="4" fill="#aeb8c0" font-family="Arial" font-size="10">W</text>
+      </g>
+    </g>
+
+    <g transform="translate(188 332)">
+      <rect width="1018" height="138" rx="12" fill="url(#panel)" stroke="#202932"/>
+      <text x="18" y="29" fill="#33d9d1" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700">RUNTIME STATUS</text>
+      <g font-family="Inter,Segoe UI,Arial,sans-serif">
+        <text x="20" y="63" fill="#8d99a4" font-size="12">PROFILE</text><text x="20" y="88" fill="#f0f4f6" font-size="16">Default</text>
+        <text x="200" y="63" fill="#8d99a4" font-size="12">PLATFORM</text><text x="200" y="88" fill="#f0f4f6" font-size="16">Windows 10 / 11</text>
+        <text x="430" y="63" fill="#8d99a4" font-size="12">RUNTIME</text><text x="430" y="88" fill="#f0f4f6" font-size="16">.NET 9 Desktop</text>
+        <text x="640" y="63" fill="#8d99a4" font-size="12">DISTRIBUTION</text><text x="640" y="88" fill="#f0f4f6" font-size="16">Binary-only</text>
+        <rect x="850" y="49" width="140" height="45" rx="9" fill="#102728" stroke="#1f7774"/>
+        <circle cx="870" cy="71" r="5" fill="#44e0a0"/>
+        <text x="884" y="77" fill="#c9fff0" font-size="15">Ready</text>
+      </g>
+    </g>
+  </g>
+
+  <text x="720" y="724" text-anchor="middle" fill="#72808c" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" letter-spacing="1.1">PROMOTIONAL INTERFACE PREVIEW • BINARY DISTRIBUTION</text>
+</svg>
