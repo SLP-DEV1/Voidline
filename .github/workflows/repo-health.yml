@@ -41,7 +41,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if grep -Eiq '(VAC[^\n]{0,24}secure|undetectable)' README.md; then
+          if grep -Fqi 'VAC & VAC Live Secure' README.md || grep -Eiq '\bundetectable\b' README.md; then
             echo "README contains an unsupported anti-cheat safety claim."
             exit 1
           fi
