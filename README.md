@@ -4,6 +4,12 @@
 
 **Binary-only Windows/.NET 9 distribution for local/offline and otherwise authorized testing.**
 
+<img src="docs/voidline-hero.svg" alt="Voidline promotional interface preview" width="100%">
+
+<sub>Promotional interface preview for the Voidline binary distribution.</sub>
+
+<br><br>
+
 [![Release](https://img.shields.io/github/v/release/SLP-DEV1/Voidline?display_name=tag)](https://github.com/SLP-DEV1/Voidline/releases/latest)
 [![Repository health](https://github.com/SLP-DEV1/Voidline/actions/workflows/repo-health.yml/badge.svg)](https://github.com/SLP-DEV1/Voidline/actions/workflows/repo-health.yml)
 [![Stars](https://img.shields.io/github/stars/SLP-DEV1/Voidline?style=flat)](https://github.com/SLP-DEV1/Voidline/stargazers)
@@ -92,6 +98,7 @@ Voidline/
 ├── Voidline.runtimeconfig.json
 ├── *.dll                     # managed dependencies
 ├── runtimes/                 # native runtime dependencies
+├── docs/voidline-hero.svg    # promotional README hero
 ├── README.md
 ├── SECURITY.md
 ├── CHANGELOG.md
