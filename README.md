@@ -1,63 +1,67 @@
 # Voidline
 
-> A Windows/.NET 9 external CS2 research overlay and tooling bundle with an ImGui-based interface.
+> Binary-only Windows/.NET 9 distribution of Voidline for local/offline and otherwise authorized testing.
 
 [![Release](https://img.shields.io/github/v/release/SLP-DEV1/Voidline?display_name=tag)](https://github.com/SLP-DEV1/Voidline/releases)
 [![Repository health](https://github.com/SLP-DEV1/Voidline/actions/workflows/repo-health.yml/badge.svg)](https://github.com/SLP-DEV1/Voidline/actions/workflows/repo-health.yml)
 [![Stars](https://img.shields.io/github/stars/SLP-DEV1/Voidline?style=flat)](https://github.com/SLP-DEV1/Voidline/stargazers)
 [![Windows](https://img.shields.io/badge/platform-Windows-0078D4)](https://www.microsoft.com/windows)
 [![.NET 9](https://img.shields.io/badge/.NET-9.0-512BD4)](https://dotnet.microsoft.com/)
+![Distribution](https://img.shields.io/badge/distribution-binary--only-444444)
 
-Voidline is a prebuilt Windows runtime bundle focused on overlay rendering, game-state visualization, configurable input automation, map helpers, and profile-based configuration.
+Voidline is distributed as a **prebuilt application bundle**. This repository intentionally contains the executable, application DLL, required managed dependencies, native runtime files, and project documentation.
 
-## Repository status
+## Binary-only by design
 
-**Important:** the current `main` branch contains the **published runtime bundle**, not the C# source tree. The repository therefore cannot currently be built from source or meaningfully code-reviewed.
+The C# source code is **not published in this repository and is not part of the distribution plan**.
 
 | Item | Status |
 | --- | --- |
-| Current GitHub release | `v3` |
+| Distribution model | Binary-only |
+| Main executable | `Voidline.exe` |
+| Application assembly | `Voidline.dll` |
 | Runtime | .NET 9.0 + Windows Desktop |
-| Source code | Not currently published in this repository |
-| Build-from-source | Not currently available |
-| Open-source license | Not currently included |
-| Distribution | Prebuilt executable + runtime dependencies |
+| Supported OS | Windows 10 / 11 |
+| Source code | Not published |
+| Build-from-source | Not available |
+| Current GitHub release | `v3` |
 
-If the goal is to grow this into a real open-source project, publishing the source under `src/`, adding an explicit license, and producing binaries through GitHub Releases are the highest-impact next steps.
+This repository should therefore be treated as a **release/download repository**, not as a source-code project.
 
 ## Highlights
 
-Voidline currently exposes a broad set of modules through a modern ImGui UI:
+The current build includes an ImGui-based interface and a broad collection of configurable visualization, input, map-helper, feedback, profile, and runtime modules.
 
-- **Overlay visualization** — player boxes, skeletons, health/armor, tracers, world entities, radar, spectator information, C4 status, and configurable colors/effects.
-- **Aim and input tooling** — configurable aim assistance, recoil compensation, trigger behavior, FOV controls, and movement helpers intended for local/offline testing.
-- **Geometry-aware helpers** — map geometry, visibility checks, ray intersection, and grenade lineup storage.
-- **Feedback tools** — hit feedback, sounds, counters, and configurable overlays.
-- **Profiles and settings** — JSON-backed configuration and UI/performance settings.
-- **Rendering stack** — ImGui.NET, ClickableTransparentOverlay, Direct3D/Vortice, ImageSharp, NAudio, and SharpGLTF dependencies.
+Notable areas include:
 
-## Runtime requirements
+- configurable overlay visualization
+- player/world information rendering
+- radar and spectator information
+- map and geometry helpers
+- input and recoil-related tooling
+- grenade-lineup storage
+- hit feedback and audio
+- JSON-backed profiles and UI settings
+- Direct3D/ImGui-based rendering
+
+## Requirements
 
 - Windows 10 or Windows 11
 - .NET 9 Desktop Runtime
-- Counter-Strike 2 for the game-specific runtime integration
+- Counter-Strike 2 for game-specific integration
 
-The checked-in runtime configuration targets both `Microsoft.NETCore.App` 9.0 and `Microsoft.WindowsDesktop.App` 9.0.
+The included runtime configuration targets both `Microsoft.NETCore.App` 9.0 and `Microsoft.WindowsDesktop.App` 9.0.
 
-## Getting the current build
+## Download and run
 
-The current repository is a runtime bundle. For local/offline testing:
+1. Download the latest repository/release archive.
+2. Keep `Voidline.exe`, `Voidline.dll`, all dependency DLLs, JSON runtime files, and `runtimes/` together.
+3. Install the .NET 9 Desktop Runtime if it is not already installed.
+4. Run `Voidline.exe` only in an environment where you are authorized to test it.
 
-1. Install the .NET 9 Desktop Runtime.
-2. Download the repository or the tagged GitHub release.
-3. Keep `Voidline.exe`, `Voidline.dll`, the dependency DLLs, and `runtimes/` together.
-4. Run the application only in an environment where you are authorized to test it.
-
-The `v3` GitHub release currently points at the repository state and has no separately uploaded release assets, so the repository archive is effectively the distribution at the moment.
+Do not copy only the EXE by itself. The application depends on the accompanying assemblies and runtime files.
 
 ## Repository layout
-
-The current tree is a **published application layout**, not the source layout:
 
 ```text
 Voidline/
@@ -68,58 +72,47 @@ Voidline/
 ├── *.dll                     # managed dependencies
 ├── runtimes/                 # native runtime dependencies
 ├── README.md
-├── CONTRIBUTING.md
 ├── SECURITY.md
 ├── CHANGELOG.md
 └── .github/
 ```
 
-A future source-based layout should instead keep generated binaries out of the repository root, for example:
+Generated local state such as `imgui.ini` is intentionally excluded from version control.
 
-```text
-Voidline/
-├── src/
-│   └── Voidline/
-├── tests/
-├── docs/
-├── .github/
-└── README.md
-```
+## Releases
 
-Release binaries should then be attached to versioned GitHub Releases rather than committed as the primary project contents.
+The repository currently uses the `v3` tag/release. For future releases, the most useful improvements are distribution-focused rather than source-focused:
 
-## Versioning note
+- attach a clean versioned ZIP to each GitHub Release
+- publish SHA-256 checksums for downloadable archives
+- keep Git tags and application version metadata aligned
+- include concise release notes and compatibility notes
+- add screenshots or a short GIF of the UI
+- keep old builds available through GitHub Releases when practical
 
-There is currently a version mismatch worth fixing in the next product release:
+### Versioning note
 
-- Git tag/release: `v3`
-- Runtime package metadata in `Voidline.deps.json`: `Voidline/1.0.0`
+The current release/tag is `v3`, while the runtime dependency metadata still identifies the application package as `Voidline/1.0.0`. Aligning these values in a future compiled build would make diagnostics and bug reports clearer.
 
-Aligning the assembly/package version with the Git tag will make diagnostics, bug reports, and release notes much clearer.
+## Bug reports and suggestions
 
-## Project roadmap
+Issues are welcome for:
 
-The most valuable repository improvements from here are:
+- reproducible crashes or startup failures
+- runtime/dependency problems
+- Windows/.NET compatibility issues
+- packaging problems
+- documentation corrections
+- UI/UX feedback
+- feature suggestions
 
-1. Publish the actual C# source under `src/`.
-2. Add a clear open-source license after choosing the intended license terms.
-3. Move compiled binaries and third-party DLLs into GitHub Release assets.
-4. Add a real build/test workflow once the source is available.
-5. Add screenshots or a short GIF of the UI so visitors understand the project in seconds.
-6. Add checksums for downloadable release artifacts.
-7. Keep release tags, assembly versions, and changelog entries in sync.
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md).
-
-Until the source is published, useful contributions are primarily documentation fixes, reproducible runtime bug reports, packaging improvements, and repository maintenance suggestions.
+Because the project is binary-only, source-code pull requests are not expected. Documentation and repository-maintenance pull requests may still be useful.
 
 ## Security and responsible use
 
-Voidline does **not** make any guarantee that a build is safe from anti-cheat detection, bans, incompatibilities, or future game updates. Claims such as “VAC secure” are intentionally avoided because they cannot be guaranteed.
+Voidline does **not** make any guarantee that a build is safe from anti-cheat detection, bans, incompatibilities, or future game updates. Claims such as “VAC secure” or “undetectable” are intentionally avoided because they cannot be guaranteed.
 
-Use the project only in environments where you have permission to test. Do not use it to disrupt public matches or other players.
+Use the project only in environments where you have permission to test it. Do not use it to disrupt public matches or other players.
 
 For security-reporting guidance, see [SECURITY.md](SECURITY.md).
 
@@ -139,8 +132,8 @@ Third-party components remain subject to their own licenses and terms.
 
 ## License
 
-No open-source license is currently included in this repository. Until an explicit license is added, normal copyright restrictions apply.
+No open-source source-code license is provided because the application source is not published. Third-party libraries remain subject to their respective licenses.
 
 ---
 
-If this project is useful to you, starring the repository helps others discover it and makes it easier to gauge interest in a source-code release.
+If Voidline is useful to you, starring the repository helps others find the project and shows interest in future binary releases.
