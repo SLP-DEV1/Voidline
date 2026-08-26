@@ -1,0 +1,71 @@
+name: Bug report
+description: Report a reproducible Voidline runtime or repository problem
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a problem. Please use a local/offline or otherwise authorized test environment.
+
+  - type: input
+    id: version
+    attributes:
+      label: Voidline version
+      description: Git tag/release or commit tested.
+      placeholder: v3
+    validations:
+      required: true
+
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version
+      placeholder: Windows 11 24H2
+    validations:
+      required: true
+
+  - type: input
+    id: dotnet
+    attributes:
+      label: .NET runtime
+      placeholder: .NET Desktop Runtime 9.x
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction steps
+      description: Give the smallest reliable sequence that reproduces the issue.
+      placeholder: |
+        1. Start ...
+        2. Open ...
+        3. Observe ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include relevant error text or logs, but remove secrets and personal data.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope confirmation
+      options:
+        - label: I reproduced this in a local/offline or otherwise authorized test environment.
+          required: true
+        - label: This report is not a request for anti-cheat bypass or ban evasion.
+          required: true

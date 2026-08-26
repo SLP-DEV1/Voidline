@@ -1,0 +1,35 @@
+name: Improvement proposal
+description: Suggest a repository, packaging, documentation, or authorized-testing improvement
+title: "[Idea]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What problem or friction should be solved?
+      placeholder: Describe the user or maintainer problem first.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed improvement
+      description: Explain the smallest useful change.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Optional. Mention other approaches you considered.
+
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope confirmation
+      options:
+        - label: This proposal is not intended to bypass anti-cheat protections, evade bans, or disrupt public matches.
+          required: true

@@ -1,0 +1,34 @@
+# .NET build output
+bin/
+obj/
+artifacts/
+TestResults/
+
+# IDE / editor
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Local runtime state
+imgui.ini
+*.log
+
+# OS metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Local secrets / environment
+.env
+.env.*
+!.env.example
+
+# Packages / temporary files
+*.nupkg
+*.snupkg
+*.tmp
+*.bak
