@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Checkout current binary bundle
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Validate runtime bundle
         shell: bash
