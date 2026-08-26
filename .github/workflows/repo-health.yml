@@ -20,13 +20,20 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          required=(README.md CONTRIBUTING.md SECURITY.md CHANGELOG.md .gitignore)
+          required=(README.md CONTRIBUTING.md SECURITY.md CHANGELOG.md .gitignore Voidline.exe Voidline.dll Voidline.deps.json Voidline.runtimeconfig.json)
           for file in "${required[@]}"; do
             if [[ ! -s "$file" ]]; then
               echo "Missing or empty required file: $file"
               exit 1
             fi
           done
+
+      - name: Validate binary-only positioning
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fqi 'Binary-only by design' README.md
+          grep -Fqi 'Source code | Not published' README.md
 
       - name: Reject committed local UI state
         shell: bash

@@ -1,24 +1,22 @@
 # Contributing to Voidline
 
-Thanks for taking the time to improve the project.
+Voidline is intentionally distributed as a **binary-only project**. The C# source code is not published, so source-code contributions are not expected.
 
-## Current repository state
+Useful contributions are still welcome in areas that fit the repository model:
 
-The current repository contains a prebuilt runtime bundle rather than the C# source tree. Until the source is published, contributions are most useful in these areas:
-
-- Documentation corrections
-- Packaging and repository-structure improvements
-- Reproducible runtime bug reports
-- Dependency or compatibility findings
-- Release-process improvements
-
-Code contributions will become practical once the source tree and project files are available in the repository.
+- documentation corrections
+- reproducible runtime bug reports
+- Windows/.NET compatibility findings
+- packaging and release improvements
+- dependency/license metadata corrections
+- screenshots or documentation assets
+- repository-maintenance improvements
 
 ## Reporting a bug
 
 Please include:
 
-1. The Voidline release/tag you tested.
+1. Voidline release/tag tested.
 2. Windows version.
 3. Installed .NET runtime version.
 4. Clear reproduction steps using a local/offline or otherwise authorized test environment.
@@ -26,34 +24,18 @@ Please include:
 6. Actual behavior and any error text or logs.
 7. Whether the issue reproduces consistently.
 
-Avoid reports whose purpose is anti-cheat bypass, ban avoidance, or evasion. Those are not treated as product bugs or security issues.
+Avoid reports whose purpose is anti-cheat bypass, ban avoidance, or evasion.
 
 ## Suggesting an improvement
 
-Good proposals explain the user problem first and the proposed solution second. For repository changes, examples are especially useful: a cleaner folder layout, a release workflow, documentation structure, or reproducible packaging issue.
+Feature and UX suggestions are welcome through GitHub Issues. Explain the problem or desired behavior clearly enough that it can be evaluated for a future compiled release.
 
 ## Pull requests
 
-Keep pull requests focused and small enough to review. Please:
+Pull requests are appropriate for repository-level changes such as documentation, issue templates, workflow maintenance, release notes, and similar non-source changes.
 
-- Explain what changed and why.
-- Link an issue when one exists.
-- Update documentation when behavior or repository structure changes.
-- Avoid committing local state, generated files, build output, secrets, or editor configuration.
-- Use clear commit messages.
-
-## Commit style
-
-Conventional-commit-style prefixes are encouraged but not mandatory:
-
-- `feat:` new behavior
-- `fix:` bug fix
-- `docs:` documentation
-- `chore:` maintenance
-- `refactor:` internal restructuring
-- `test:` tests
-- `ci:` automation
+Please keep them focused and explain what changed and why. Do not commit local state, generated files, secrets, editor configuration, or replacement executable/DLL files unless the repository owner explicitly intends to publish a new binary build.
 
 ## Scope and responsible use
 
-Contributions should be suitable for authorized research, local/offline testing, documentation, diagnostics, or general software-engineering work. Requests specifically aimed at bypassing anti-cheat protections or disrupting public matches are out of scope.
+Contributions should be suitable for authorized research, local/offline testing, documentation, diagnostics, packaging, or general repository maintenance. Requests specifically aimed at bypassing anti-cheat protections or disrupting public matches are out of scope.
