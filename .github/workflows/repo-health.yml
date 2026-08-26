@@ -1,0 +1,47 @@
+name: Repository health
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  repository-health:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check required repository files
+        shell: bash
+        run: |
+          set -euo pipefail
+          required=(README.md CONTRIBUTING.md SECURITY.md CHANGELOG.md .gitignore)
+          for file in "${required[@]}"; do
+            if [[ ! -s "$file" ]]; then
+              echo "Missing or empty required file: $file"
+              exit 1
+            fi
+          done
+
+      - name: Reject committed local UI state
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git ls-files --error-unmatch imgui.ini >/dev/null 2>&1; then
+            echo "imgui.ini is generated local UI state and must not be committed."
+            exit 1
+          fi
+
+      - name: Reject unsupported anti-cheat safety claims
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -Eiq '(VAC[^\n]{0,24}secure|undetectable)' README.md; then
+            echo "README contains an unsupported anti-cheat safety claim."
+            exit 1
+          fi
